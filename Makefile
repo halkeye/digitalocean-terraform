@@ -1,7 +1,7 @@
 #!make
 .DEFAULT_GOAL := help
 
-.PHONY: plan apply help all
+.PHONY: plan apply help all fmt
 
 all: plan apply
 
@@ -11,7 +11,10 @@ plan: ## Plan resources changes
 apply: ## Execute resources changes
 	terraform apply plan.out
 
-show: ## Execute resources changes
+fmt: ## Format
+	terraform fmt provider.tf
+
+show: ## Show current state
 	terraform show
 
 .PHONY: help
